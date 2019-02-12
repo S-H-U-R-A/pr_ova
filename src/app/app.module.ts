@@ -1,40 +1,71 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, ErrorHandler }     from '@angular/core';
+import { BrowserModule }              from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { HttpClientModule }           from '@angular/common/http';
+import { MyApp }                      from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+/*PLUGINS NATIVOS */
+import { StatusBar }                  from '@ionic-native/status-bar';
+import { SplashScreen }               from '@ionic-native/splash-screen';
+import { IonicStorageModule }         from '@ionic/storage';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+/*MENU TABS DE LA APP */
+import { TabsPage }                   from '../pages/tabs/tabs';
+/*LAYOUTS DE LA APP */
+import { 
+          LoginPage, 
+          RegisterPage, 
+          HomeStudentPage,
+          ProfileStudentPage,
+          HomeTeacherPage,
+          ProfileTeacherPage
+} from '../pages/index.pages';
+
+
+/*PROVIDER */
+import { AuthServiceProvider }        from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    LoginPage, 
+    RegisterPage, 
+    HomeStudentPage,
+    ProfileStudentPage,
+    HomeTeacherPage,
+    ProfileTeacherPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    IonicModule.forRoot(MyApp,{
+      tabsPlacement: 'bottom',
+      platforms: {
+          android: {
+            tabsPlacement: 'top'
+          }
+      },
+      backButtonText: '',
+    }),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    LoginPage, 
+    RegisterPage, 
+    HomeStudentPage,
+    ProfileStudentPage,
+    HomeTeacherPage,
+    ProfileTeacherPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
