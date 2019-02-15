@@ -2,7 +2,6 @@ import { Component }    from '@angular/core';
 import { Platform }     from 'ionic-angular';
 import { StatusBar }    from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Storage }      from '@ionic/storage';
 
 /*LAYOUT OF AUTH */
 import { LoginPage} from '../pages/index.pages';
@@ -17,10 +16,9 @@ export class MyApp {
   public rootPage:any;
 
   constructor(
-              public  platform:     Platform, 
-              public  statusBar:    StatusBar, 
-              public  splashScreen: SplashScreen,
-              public  storage:      Storage, 
+              public  platform:             Platform, 
+              public  statusBar:            StatusBar, 
+              public  splashScreen:         SplashScreen
   ) {
 
     platform.ready().then(() => {
@@ -28,14 +26,13 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      this.storage.get('sesion').then((value)=>{
-        if( value == true && value != undefined || value != null){
-          this.rootPage = TabsPage;
-        }else{
-          console.log('NO EXISTE SESSION');
-          this.rootPage = LoginPage;
-        }
-      })
+      if( localStorage.getItem('sesion') == 'true'){
+        this.rootPage = TabsPage;
+      }else{
+        this.rootPage = LoginPage;
+      }
+
+
 
     });
   }

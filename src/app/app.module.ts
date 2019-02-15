@@ -16,14 +16,14 @@ import {
           LoginPage, 
           RegisterPage, 
           HomeStudentPage,
-          ProfileStudentPage,
           HomeTeacherPage,
-          ProfileTeacherPage
+          ProfilePage
 } from '../pages/index.pages';
 
 
 /*PROVIDER */
 import { AuthServiceProvider }        from '../providers/auth-service/auth-service';
+import { UtilitiesProvider } from '../providers/utilities/utilities';
 
 @NgModule({
   declarations: [
@@ -31,16 +31,14 @@ import { AuthServiceProvider }        from '../providers/auth-service/auth-servi
     LoginPage, 
     RegisterPage, 
     HomeStudentPage,
-    ProfileStudentPage,
     HomeTeacherPage,
-    ProfileTeacherPage,
+    ProfilePage,
     TabsPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp,{
-      tabsPlacement: 'bottom',
       platforms: {
           android: {
             tabsPlacement: 'top'
@@ -56,16 +54,16 @@ import { AuthServiceProvider }        from '../providers/auth-service/auth-servi
     LoginPage, 
     RegisterPage, 
     HomeStudentPage,
-    ProfileStudentPage,
     HomeTeacherPage,
-    ProfileTeacherPage,
+    ProfilePage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    UtilitiesProvider
   ]
 })
 export class AppModule {}

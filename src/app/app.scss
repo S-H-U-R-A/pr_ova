@@ -14,3 +14,33 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/* Color azul */
+.colorAzul{
+    color: color($colors, Azul) !important;
+}
+
+/* Color blanco*/
+.colorBlanco{
+    color: color($colors, light) !important;
+}
+
+/* Color Navbar*/
+.toolbar-background {
+    background-color: color($colors, Azul) !important;
+}
+
+/*Color de titulos de navbar*/
+.toolbar-title{
+    color: color($colors, light) !important;
+}
+
+/*Cambio de color de flecha atras*/
+ion-header ion-icon.back-button-icon.icon {
+    color: color($colors, Azul) !important;
+}
+
+
+.colorMessageInvalidInputs{
+    color: color($colors, danger) !important;
+}

@@ -1,18 +1,53 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title class="colorBlanco" ><b>Iniciar sesión</b></ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <form 
+    [formGroup]="formularioLogin" 
+    (ngSubmit)="iniciarSesion()"
+  >
+      <!-- Choose typeUser -->
+      <ion-item no-padding padding-top>
+        <ion-icon name="person" item-left color="Azul"></ion-icon>
+        <ion-label class="textColorWhite">Tipo de usuario</ion-label>
+        <ion-select formControlName="typeUser" interface="alert" cancelText="CANCELAR" placeholder="NINGUNO" no-padding >
+          <ion-option value="">NINGUNO</ion-option>
+          <ion-option *ngFor="let type of typeUSer" [value]="type.DESCRIPCION">{{ type.DESCRIPCION }}</ion-option>
+        </ion-select>
+      </ion-item>
 
+      <!-- Input Email -->
+      <ion-item no-padding>
+        <ion-icon name="mail" item-left color="Azul"></ion-icon>
+        <ion-label floating >Correo</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <!-- Mensaje de error -->
+      <ion-item  no-lines text-center no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioLogin.get('email').errors?.pattern"><b>*Ejemplo: ejemplo@ejemplo.com.co*</b></ion-item>
+
+      <!-- Input Password -->
+      <ion-item no-padding>
+        <ion-icon name="key" item-left color="Azul"></ion-icon>
+        <ion-label floating >Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"  maxlength="30" minlength="8"></ion-input>
+      </ion-item>
+      <!-- Mensaje de error -->
+      <ion-item  no-lines text-center text-wrap no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioLogin.get('password').errors?.pattern"><b>*La contraseña no coincide con el formato establecido*</b></ion-item>
+
+      <ion-item-divider ></ion-item-divider>
+
+      <!-- Button de envio de formulario -->
+      <button 
+            ion-button
+            full padding 
+            color="Azul"
+            type="submit" 
+            [disabled]="!formularioLogin.valid">
+        Ingresar
+      </button>
+
+  </form>
 </ion-content>
