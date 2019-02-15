@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { App, NavParams } from 'ionic-angular';
-/*Provider para almacenamiento interno */
-import { Storage } from '@ionic/storage';
 /*LAYOUTS APP */
 import { HomeStudentPage, HomeTeacherPage, ProfilePage} from '../index.pages';
 /*PROVIDERS */
@@ -21,8 +19,7 @@ export class TabsPage {
   constructor( 
               public  app:                App,
               public  navParams:          NavParams,
-              public  utilitiesProvider:  UtilitiesProvider,
-              public  storage:            Storage
+              public  utilitiesProvider:  UtilitiesProvider
   ) { 
 
       if( localStorage.getItem('typeUSer') == 'ESTUDIANTE' ){
