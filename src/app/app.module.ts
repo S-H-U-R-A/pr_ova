@@ -20,8 +20,11 @@ import {
           RegisterPage, 
           HomeStudentPage,
           HomeTeacherPage,
+          TeacherProblemPage,
+          StudentProblemPage,
           ProfilePage,
-          ModalAvatarPage
+          ModalAvatarPage,
+          ModalUpdateUserPage
 } from '../pages/index.pages';
 
 
@@ -36,8 +39,11 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     RegisterPage, 
     HomeStudentPage,
     HomeTeacherPage,
+    TeacherProblemPage,
+    StudentProblemPage,
     ProfilePage,
     ModalAvatarPage,
+    ModalUpdateUserPage,
     TabsPage
   ],
   imports: [
@@ -60,8 +66,11 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     RegisterPage, 
     HomeStudentPage,
     HomeTeacherPage,
+    TeacherProblemPage,
+    StudentProblemPage,
     ProfilePage,
     ModalAvatarPage,
+    ModalUpdateUserPage,
     TabsPage
   ],
   providers: [

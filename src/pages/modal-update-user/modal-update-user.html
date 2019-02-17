@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Fortmath</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="cerrarModal()">
+            <ion-icon ios="ios-close" md="md-close" color="light"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item class="colorGris " no-padding (click)="takePhoto()">
+      <ion-icon name="md-camera" item-start color="Azul"></ion-icon>
+      {{ titlePhoto  }} 
+    </ion-item>
+  
+    <form 
+    [formGroup]="formularioUpdateUser" 
+    (ngSubmit)="updateUser()"
+    >
+      <!-- Input Nombres -->
+      <ion-item no-padding>
+          <ion-icon name="person" item-left color="Azul"></ion-icon>
+        <ion-label floating >Nombres</ion-label>
+        <ion-input type="text" formControlName="nombres"></ion-input>
+      </ion-item>
+      <!-- Mensaje de error -->
+      <ion-item  no-lines no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioUpdateUser.get('nombres').errors?.pattern"><b>*Solo se permiten letras*</b></ion-item>
+
+      <!-- Input Apellidos -->
+      <ion-item no-padding>
+        <ion-icon name="person" item-left color="Azul"></ion-icon>
+        <ion-label floating >Apellidos</ion-label>
+        <ion-input type="text" formControlName="apellidos"></ion-input>
+      </ion-item>
+      <!-- Mensaje de error -->
+      <ion-item  no-lines no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioUpdateUser.get('apellidos').errors?.pattern"><b>*Solo se permiten letras*</b></ion-item>
+
+      <ion-item-divider ></ion-item-divider>
+
+      <!-- Button de envio de formulario -->
+      <button 
+            ion-button
+            full padding 
+            color="Azul"
+            type="submit" 
+            [disabled]="!formularioUpdateUser.valid">
+        Actualizar
+      </button>
+
+    </form>
+
+</ion-content>

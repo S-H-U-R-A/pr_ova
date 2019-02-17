@@ -10,6 +10,8 @@ export class AuthServiceProvider {
   private urlLogin:string     = 'http://localhost/PR_OVA/login';
   /*URL REGISTER */
   private urlRegister:string  = 'http://localhost/PR_OVA/register';
+  /*URL UPDATE USER */
+  private urlUpdate:string    = 'http://localhost/PR_OVA/updateInfoUser';
 
   constructor(
               public  http:       HttpClient
@@ -70,6 +72,30 @@ export class AuthServiceProvider {
     
     let promesa = new Promise( ( resolve, reject) => {
       this.http.post(this.urlRegister,dataBody,{headers}).subscribe( (data)=>{
+        resolve(data);
+      }, 
+      error => {
+        reject('Error al consultar el servicio, verifique su conexión a internet al registrar: ' + error);
+      }
+      )
+    });
+
+    return promesa;
+
+  }
+
+  public update(nombres:any, apellidos:any, photo:any, userId:any){
+    /*Headers para peticiones externas */
+    const headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    /*Cuerpo de los datos para la petición */
+    const dataBody = new HttpParams()
+    .set('NOMBRES'          , nombres )
+    .set('APELLIDOS'        , apellidos)
+    .set('AVATAR'           , photo)
+    .set('ID'               , userId)
+    
+    let promesa = new Promise( ( resolve, reject) => {
+      this.http.post(this.urlUpdate,dataBody,{headers}).subscribe( (data)=>{
         resolve(data);
       }, 
       error => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, App } from 'ionic-angular';
 /*Libreria de formularios */
 import { AbstractControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 /*PROVIDERS */
@@ -9,7 +9,7 @@ import { AuthServiceProvider } from '../../../providers/auth-service/auth-servic
 /*PLUGIN CAMERA */
 import { Camera, CameraOptions } from '@ionic-native/camera';
 /*LAYOUT MODAL AVATAR */
-import { ModalAvatarPage } from '../../index.pages';
+import { ModalAvatarPage, LoginPage } from '../../index.pages';
 
 /*Validar el password */
 function passwordConfirming(c: AbstractControl): any {
@@ -50,7 +50,8 @@ export class RegisterPage {
               private modalCtrl:          ModalController,
               public  utilitiesProvider:  UtilitiesProvider,
               public  auth:               AuthServiceProvider,
-              private camera:             Camera
+              private camera:             Camera,
+              public  app:                App
   ) {
 
     /* Se carga los tipos de usuarios validos */
@@ -190,7 +191,8 @@ export class RegisterPage {
         this.utilitiesProvider.presentToast('El usuario ya esta registrado', 1500);
       }else{
         this.utilitiesProvider.presentToast('Registro exitoso.', 1500);
-        this.navCtrl.pop();
+        let nav = this.app.getRootNav();
+        nav.setRoot(LoginPage);
       }
       
     })
