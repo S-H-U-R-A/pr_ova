@@ -17,7 +17,7 @@ export class ModalAvatarPage {
               public viewCtrl:  ViewController
   ) {
     /*Se obtiene el parametro de la foto */
-    this.photo = "data:image/png;base64,"+this.navParams.get('photo');
+    this.photo = "data:image/jpeg;base64,"+this.navParams.get('photo');
   }
 
   public cerrarModal(){

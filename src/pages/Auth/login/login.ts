@@ -63,6 +63,8 @@ export class LoginPage {
 
   public iniciarSesion(){
 
+    this.utilitiesProvider.presentLoading('Un momento por favor');
+
     this.auth.login(
                     this.formularioLogin.value.email, 
                     this.formularioLogin.value.password, 
@@ -73,8 +75,12 @@ export class LoginPage {
       this.formularioLogin.reset();
       /* Se valida la respuesta del login */
       if(data['error'] == '2'){
+        //SE OCULTA EL GIF DE CARGANDO
+        this.utilitiesProvider.closePresentLoading();
         this.utilitiesProvider.presentToast('Usuario no valido.', 1500);
       }else if(data['error'] == '1'){
+        //SE OCULTA EL GIF DE CARGANDO
+        this.utilitiesProvider.closePresentLoading();
         this.utilitiesProvider.presentToast('Ha ocurrido un error interno.', 1500);
       }else{
 
@@ -87,6 +93,8 @@ export class LoginPage {
         localStorage.setItem('sesion',    'true' );
         /*Se limpian los campos del formulario */
         this.formularioLogin.reset();
+        //SE OCULTA EL GIF DE CARGANDO
+        this.utilitiesProvider.closePresentLoading();
         /*Se cambia el root de la aplicación */
         this.navCtrl.setRoot(TabsPage);
 

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Fortmath</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="cerrarModal()">
+            <ion-icon ios="ios-close" md="md-close" color="light"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form 
+  [formGroup]="addRta" 
+  (ngSubmit)="agregarRespuesta()"
+  >
+      <!-- Input Titulo -->
+      <ion-item no-padding>
+        <ion-label floating >Descripción</ion-label>
+        <ion-input type="text" formControlName="descripcion"></ion-input>
+      </ion-item>
+
+      <ion-item-divider no-lines></ion-item-divider>
+      
+      <ion-list radio-group formControlName="correcta" no-lines>
+
+        <ion-list-header no-lines> 
+          <h2 class="colorGris">Respuesta correcta</h2>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Verdadero</ion-label>
+          <ion-radio  value="1" ></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Falso</ion-label>
+          <ion-radio value="0" ></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <ion-item-divider ></ion-item-divider>
+  
+      <!-- Button de envio de formulario -->
+      <button 
+            ion-button
+            full padding 
+            color="Azul"
+            type="submit" 
+            [disabled]="!addRta.valid">
+        Agregar
+      </button>
+  
+  </form>
+
+</ion-content>

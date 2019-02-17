@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 export class AuthServiceProvider {
 
   /*URL TIPO DE USUARIO*/
-  private urlTypeUser:string  = 'http://localhost/PR_OVA/typeUser';
+  private urlTypeUser:string  = 'https://fortmath.000webhostapp.com/typeUser';
   /*URL LOGIN*/
-  private urlLogin:string     = 'http://localhost/PR_OVA/login';
+  private urlLogin:string     = 'https://fortmath.000webhostapp.com/login';
   /*URL REGISTER */
-  private urlRegister:string  = 'http://localhost/PR_OVA/register';
+  private urlRegister:string  = 'https://fortmath.000webhostapp.com/register';
   /*URL UPDATE USER */
-  private urlUpdate:string    = 'http://localhost/PR_OVA/updateInfoUser';
+  private urlUpdate:string    = 'https://fortmath.000webhostapp.com/updateInfoUser';
 
   constructor(
               public  http:       HttpClient

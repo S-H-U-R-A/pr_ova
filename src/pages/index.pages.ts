@@ -6,4 +6,7 @@ export { TeacherProblemPage }   from '../pages/teacher/teacher-problem/teacher-p
 export { StudentProblemPage }   from '../pages/student/student-problem/student-problem';
 export { ProfilePage }          from '../pages/profile/profile';
 export { ModalAvatarPage }      from '../pages/Auth/modal-avatar/modal-avatar';
+export { ModalPhotoPage }       from '../pages/modal-photo/modal-photo';
 export { ModalUpdateUserPage }  from '../pages/modal-update-user/modal-update-user';
+export { ModalRespuestaPage }   from '../pages/teacher/modal-respuesta/modal-respuesta';
+export { ModalSugerenciaPage }  from '../pages/teacher/modal-sugerencia/modal-sugerencia';

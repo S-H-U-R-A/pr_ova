@@ -1,18 +1,75 @@
-<!--
-  Generated template for the TeacherProblemPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>teacherProblem</ion-title>
+    <ion-title>Fortmath</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+
+  <ion-list-header no-lines text-center>
+    <h1 class="colorAzul" text-center> Crear un nuevo problema </h1>
+  </ion-list-header>
+
+  <ion-item class="colorGris " no-padding (click)="takePhoto()">
+      <ion-icon name="md-camera" item-start color="Azul"></ion-icon>
+    Adjunta una foto(Opcional)
+  </ion-item>
+
+  <ion-item-divider  *ngIf="flagPhoto" class="backgroundTransparent textColorWhite" no-padding no-lines></ion-item-divider>
+
+  <ion-item 
+            class="colorGris" 
+            no-padding 
+            (click)="showPhoto()"
+            *ngIf="flagPhoto">
+    <ion-icon name="images" item-start color="Azul"></ion-icon>
+    Ver Imagen
+  </ion-item>
+
+  <ion-fab bottom right>
+    <button ion-fab color="Azul" (click)="addRtaSug()" [disabled]="!RegisterProblem.valid" ><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <form 
+  [formGroup]="RegisterProblem" 
+  (ngSubmit)="registerProblem()"
+  >
+    <!-- Input Titulo -->
+    <ion-item no-padding>
+        <ion-icon name="md-list-box" item-left color="Azul"></ion-icon>
+      <ion-label floating class="textColorWhite">Titulo</ion-label>
+      <ion-input type="text" formControlName="titulo"></ion-input>
+    </ion-item>
+
+    <!-- Input Descripcion -->
+    <ion-item no-padding>
+      <ion-icon name="md-list-box" item-left color="Azul"></ion-icon>
+      <ion-label floating class="textColorWhite">Descripción</ion-label>
+      <ion-input type="text" formControlName="descripcion"></ion-input>
+    </ion-item>
+
+    <!-- Input Pregunta -->
+    <ion-item no-padding>
+      <ion-icon name="md-list-box" item-left color="Azul"></ion-icon>
+      <ion-label floating class="textColorWhite">Pregunta</ion-label>
+      <ion-input type="text" formControlName="pregunta"></ion-input>
+    </ion-item>
+
+    <ion-item-divider ></ion-item-divider>
+
+    <!-- Button de envio de formulario -->
+    <button 
+          ion-button
+          full padding 
+          color="Azul"
+          type="submit" 
+          [disabled]="invalidForm">
+      Crear
+    </button>
+
+</form>
+
+
+
 
 </ion-content>

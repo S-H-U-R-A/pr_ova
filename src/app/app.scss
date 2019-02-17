@@ -82,3 +82,15 @@ ion-header ion-icon.back-button-icon.icon {
 .action-sheet-md .action-sheet-group .button-inner {
     color: color($colors, gray) !important;
 }
+.alertaPin{
+    font-size: 3rem !important;
+}
+.alert-head{
+    h3{
+        font-size: 4rem !important;
+        text-align: center !important;
+    }
+    h2{
+        text-align: center !important;
+    }
+}

@@ -177,6 +177,8 @@ export class RegisterPage {
 
   public registrarse(){
 
+    this.utilitiesProvider.presentLoading('Un momento por favor');
+
     this.auth.register(
       this.formularioRegister.value.typeUser,
       this.formularioRegister.value.nombres,
@@ -188,8 +190,12 @@ export class RegisterPage {
       /*Se limpian los campos del formulario */
       this.formularioRegister.reset();
       if( dataRegister['error'] == '1'){
+        //SE OCULTA EL GIF DE CARGANDO
+        this.utilitiesProvider.closePresentLoading();
         this.utilitiesProvider.presentToast('El usuario ya esta registrado', 1500);
       }else{
+        //SE OCULTA EL GIF DE CARGANDO
+        this.utilitiesProvider.closePresentLoading();
         this.utilitiesProvider.presentToast('Registro exitoso.', 1500);
         let nav = this.app.getRootNav();
         nav.setRoot(LoginPage);

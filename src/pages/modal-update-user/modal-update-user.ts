@@ -133,6 +133,8 @@ export class ModalUpdateUserPage {
   }
 
   public updateUser(){
+      //SE MUESTRA EL GIF DE CARGANDO
+      this.utilitiesProvider.presentLoading('Un momento por favor');
       this.auth.update(
         this.formularioUpdateUser.value.nombres,
         this.formularioUpdateUser.value.apellidos,
@@ -142,6 +144,8 @@ export class ModalUpdateUserPage {
         if( data['error'] == '1'){
           /*Se limpian los campos del formulario */
           this.formularioUpdateUser.reset();
+          //SE OCULTA EL GIF DE CARGANDO
+          this.utilitiesProvider.closePresentLoading();
           this.utilitiesProvider.presentToast('Ha ocurrido un error interno', 1500);
         }else{
           this.utilitiesProvider.presentToast('Actualización exitosa.', 1500);
@@ -150,6 +154,8 @@ export class ModalUpdateUserPage {
           localStorage.setItem('imageUser', this.photo);
           /*Se limpian los campos del formulario */
           this.formularioUpdateUser.reset();
+          //SE OCULTA EL GIF DE CARGANDO
+          this.utilitiesProvider.closePresentLoading();
           this.viewCtrl.dismiss();
         }
       });

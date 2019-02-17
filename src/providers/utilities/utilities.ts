@@ -46,11 +46,11 @@ export class UtilitiesProvider {
   }
   /*Metodo que muestra una alerta basica y retorna una promesa que se resuelve al hacer click en el boton */
   public showAlertBasic(tittle:string, subtitle:string, button?:string ){
-
     let promesa = new Promise( (resolve) =>{
       this.alert = this.alertCtrl.create({
         title: tittle,
         subTitle: subtitle,
+        cssClass:'alertaPin',
         buttons: [{
           text: button,
           handler: () => {
@@ -60,9 +60,7 @@ export class UtilitiesProvider {
       });
       this.alert.present();
     });
-
     return promesa;
-    
   }
   /*Metodo que muestra un mensaje toast */
   public presentToast(message:string, duration:number){
@@ -109,6 +107,32 @@ export class UtilitiesProvider {
             icon: 'images',
             handler: () => {
                 resolve('galeria');
+            }
+          }
+        ]
+      });
+      actionSheet.present();
+    });
+    return promise;
+  }
+
+  public presentActionSheetRespuestasSugerencia(title:string){
+    let promise = new Promise((resolve)=>{
+      let actionSheet = this.actionSheetCtrl.create({
+        title: title,
+        cssClass: 'paddingLeftSubtitle',
+        buttons: [
+          {
+            text: 'Agregar respuesta (Máximo 4 respuestas)',
+            icon: 'ios-list-box-outline',
+            handler: () => {
+                resolve('rta');
+            }
+          },{
+            text: 'Agregar sugerencia (Máximo 3 sugerencias)',
+            icon: 'ios-list-box-outline',
+            handler: () => {
+                resolve('sug');
             }
           }
         ]

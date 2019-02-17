@@ -24,13 +24,18 @@ import {
           StudentProblemPage,
           ProfilePage,
           ModalAvatarPage,
-          ModalUpdateUserPage
+          ModalPhotoPage,
+          ModalUpdateUserPage,
+          ModalRespuestaPage,
+          ModalSugerenciaPage
 } from '../pages/index.pages';
 
 
 /*PROVIDER */
 import { AuthServiceProvider }        from '../providers/auth-service/auth-service';
 import { UtilitiesProvider } from '../providers/utilities/utilities';
+import { TeacherOperationsProvider } from '../providers/teacher-operations/teacher-operations';
+import { StudentOperationsProvider } from '../providers/student-operations/student-operations';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,10 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     StudentProblemPage,
     ProfilePage,
     ModalAvatarPage,
+    ModalPhotoPage,
     ModalUpdateUserPage,
+    ModalRespuestaPage,
+    ModalSugerenciaPage,
     TabsPage
   ],
   imports: [
@@ -70,7 +78,10 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     StudentProblemPage,
     ProfilePage,
     ModalAvatarPage,
+    ModalPhotoPage,
     ModalUpdateUserPage,
+    ModalRespuestaPage,
+    ModalSugerenciaPage,
     TabsPage
   ],
   providers: [
@@ -79,7 +90,9 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    UtilitiesProvider
+    UtilitiesProvider,
+    TeacherOperationsProvider,
+    StudentOperationsProvider
   ]
 })
 export class AppModule {}
