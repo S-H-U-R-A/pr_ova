@@ -2,10 +2,14 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 /*Libreria de formularios */
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+/*PROVIDERS */
+import { UtilitiesProvider } from '../../../providers/utilities/utilities';
 /* Provider de atutenticacion */
 import { AuthServiceProvider } from '../../../providers/auth-service/auth-service';
 /*Layout TABS */
 import { TabsPage } from '../../tabs/tabs';
+/*Layout REGISTER */
+import { RegisterPage } from '../../index.pages';
 
 @IonicPage()
 @Component({
@@ -20,15 +24,17 @@ export class LoginPage {
   public typeUSer:any;
 
   constructor(
-              public  navCtrl:        NavController, 
-              public  navParams:      NavParams,
-              private formBuilder:    FormBuilder,
-              public  auth:           AuthServiceProvider
+              public  navCtrl:            NavController, 
+              public  navParams:          NavParams,
+              private formBuilder:        FormBuilder,
+              public  utilitiesProvider:  UtilitiesProvider,
+              public  auth:               AuthServiceProvider
   ) {
 
     /* Se carga los tipos de usuarios validos */
-    auth.getTypeUser().then((data)=>{
+    this.auth.getTypeUser().then((data)=>{
       this.typeUSer = data;
+      console.log(this.typeUSer);
     });
 
     /*Objeto del formulario */
@@ -56,6 +62,7 @@ export class LoginPage {
   }
 
   public iniciarSesion(){
+
     this.auth.login(
                     this.formularioLogin.value.email, 
                     this.formularioLogin.value.password, 
@@ -66,24 +73,30 @@ export class LoginPage {
       this.formularioLogin.reset();
       /* Se valida la respuesta del login */
       if(data['error'] == '2'){
-        console.log('Usuario no valido.');
+        this.utilitiesProvider.presentToast('Usuario no valido.', 1500);
       }else if(data['error'] == '1'){
-        console.log('Ocurrio un error en el sistema.');
+        this.utilitiesProvider.presentToast('Ha ocurrido un error interno.', 1500);
       }else{
 
+        /*Se almacenan los datos del usuario */
         localStorage.setItem('userId',    data[0]['ID']);
         localStorage.setItem('name',      data[0]['NOMBRES']);
         localStorage.setItem('lastName',  data[0]['APELLIDOS']);
         localStorage.setItem('imageUser', data[0]['AVATAR']);
         localStorage.setItem('typeUSer',  data[0]['TIPO']);
         localStorage.setItem('sesion',    'true' );
-
+        /*Se limpian los campos del formulario */
+        this.formularioLogin.reset();
         /*Se cambia el root de la aplicación */
         this.navCtrl.setRoot(TabsPage);
 
       }
 
     });
+  }
+
+  public goRegister(){
+    this.navCtrl.push(RegisterPage);
   }
 
   ionViewDidLoad() {

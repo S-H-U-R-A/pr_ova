@@ -1,18 +1,97 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>Fortmath</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
 
+    <ion-item class="colorGris " no-padding (click)="takePhoto()">
+      <ion-icon name="md-camera" item-start color="Azul"></ion-icon>
+      Adjunta una foto
+    </ion-item>
+
+    <ion-item-divider  *ngIf="flagPhoto" class="backgroundTransparent textColorWhite" no-padding no-lines></ion-item-divider>
+
+    <ion-item 
+              class="colorGris" 
+              no-padding 
+              (click)="showPhoto()"
+              *ngIf="flagPhoto">
+      <ion-icon name="images" item-start color="Azul"></ion-icon>
+      Ver Imagen
+    </ion-item>
+
+    <form 
+      [formGroup]="formularioRegister" 
+      (ngSubmit)="registrarse()"
+    >
+        <!-- Choose typeUser -->
+        <ion-item no-padding padding-top>
+          <ion-icon name="person" item-left color="Azul"></ion-icon>
+          <ion-label class="textColorWhite">Tipo de usuario</ion-label>
+          <ion-select formControlName="typeUser" interface="alert" cancelText="CANCELAR" placeholder="NINGUNO" no-padding >
+            <ion-option value="">NINGUNO</ion-option>
+            <ion-option *ngFor="let type of typeUSer" [value]="type.ID">{{ type.DESCRIPCION }}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Input Nombres -->
+        <ion-item no-padding>
+            <ion-icon name="person" item-left color="Azul"></ion-icon>
+          <ion-label floating class="textColorWhite">Nombres</ion-label>
+          <ion-input type="text" formControlName="nombres"></ion-input>
+        </ion-item>
+        <!-- Mensaje de error -->
+        <ion-item  no-lines no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioRegister.get('nombres').errors?.pattern"><b>*Solo se permiten letras*</b></ion-item>
+
+        <!-- Input Apellidos -->
+        <ion-item no-padding>
+          <ion-icon name="person" item-left color="Azul"></ion-icon>
+          <ion-label floating class="textColorWhite">Apellidos</ion-label>
+          <ion-input type="text" formControlName="apellidos"></ion-input>
+        </ion-item>
+        <!-- Mensaje de error -->
+        <ion-item  no-lines no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioRegister.get('apellidos').errors?.pattern"><b>*Solo se permiten letras*</b></ion-item>
+
+        <!-- Input Email -->
+        <ion-item no-padding>
+          <ion-icon name="mail" item-left color="Azul"></ion-icon>
+          <ion-label floating >Correo</ion-label> 
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <!-- Mensaje de error -->
+        <ion-item  no-lines text-center no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioRegister.get('email').errors?.pattern"><b>*Ejemplo: ejemplo@ejemplo.com.co*</b></ion-item>
+
+        <!-- Input Password -->
+        <ion-item no-padding>
+          <ion-icon name="key" item-left color="Azul"></ion-icon>
+          <ion-label floating >Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"  maxlength="30" minlength="8"></ion-input>
+        </ion-item>
+        <!-- Mensaje de error -->
+        <ion-item  no-lines text-center text-wrap no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioRegister.get('password').errors?.pattern"><b>*La contraseña no coincide con el formato establecido*</b></ion-item>
+
+        <!-- Input Password -->
+        <ion-item  no-padding>
+          <ion-icon name="key" item-left color="Azul"></ion-icon>
+          <ion-label floating class="textColorWhite">Confirmar contraseña</ion-label>
+          <ion-input type="password" formControlName="passwordConfirmed"  maxlength="30" minlength="8"></ion-input>
+        </ion-item>
+        <!-- Mensaje de error -->
+        <ion-item  no-lines text-center text-wrap no-padding class="colorMessageInvalidInputs sizeTextMessageInvalidInputs" *ngIf="formularioRegister.get('passwordConfirmed').invalid && formularioRegister.get('passwordConfirmed').dirty && formularioRegister.get('passwordConfirmed').value != '' "><b>*Las contraseñas no coinciden*</b></ion-item>
+
+        <ion-item-divider ></ion-item-divider>
+
+        <!-- Button de envio de formulario -->
+        <button 
+              ion-button
+              full padding 
+              color="Azul"
+              type="submit" 
+              [disabled]="!formularioRegister.valid">
+          Registrarse
+        </button>
+
+      </form>
 </ion-content>

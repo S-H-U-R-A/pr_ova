@@ -91,7 +91,31 @@ export class UtilitiesProvider {
 
     return promesa;
   }
-
-
+  /* */
+  public presentActionSheetReporteConexion(title:string){
+    let promise = new Promise((resolve)=>{
+      let actionSheet = this.actionSheetCtrl.create({
+        title: title,
+        cssClass: 'paddingLeftSubtitle',
+        buttons: [
+          {
+            text: 'Tomar foto',
+            icon: 'md-camera',
+            handler: () => {
+                resolve('foto');
+            }
+          },{
+            text: 'Seleccionar de la biblioteca',
+            icon: 'images',
+            handler: () => {
+                resolve('galeria');
+            }
+          }
+        ]
+      });
+      actionSheet.present();
+    });
+    return promise;
+  }
 
 }

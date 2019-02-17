@@ -23,7 +23,7 @@ export class MyApp {
 
     platform.ready().then(() => {
 
-      statusBar.styleDefault();
+      statusBar.backgroundColorByHexString('#0060AA');
       splashScreen.hide();
 
       if( localStorage.getItem('sesion') == 'true'){
@@ -31,8 +31,6 @@ export class MyApp {
       }else{
         this.rootPage = LoginPage;
       }
-
-
 
     });
   }

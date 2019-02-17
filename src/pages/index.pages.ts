@@ -3,3 +3,4 @@ export { RegisterPage }         from '../pages/Auth/register/register';
 export { HomeTeacherPage }      from '../pages/teacher/home-teacher/home-teacher';
 export { HomeStudentPage }      from '../pages/student/home-student/home-student';
 export { ProfilePage }          from '../pages/profile/profile';
+export { ModalAvatarPage } from '../pages/Auth/modal-avatar/modal-avatar';

@@ -19,28 +19,66 @@
 .colorAzul{
     color: color($colors, Azul) !important;
 }
-
 /* Color blanco*/
 .colorBlanco{
     color: color($colors, light) !important;
 }
-
+.colorGris{
+    color: color($colors, gray) !important;
+}
 /* Color Navbar*/
 .toolbar-background {
     background-color: color($colors, Azul) !important;
 }
-
 /*Color de titulos de navbar*/
 .toolbar-title{
     color: color($colors, light) !important;
 }
-
 /*Cambio de color de flecha atras*/
 ion-header ion-icon.back-button-icon.icon {
-    color: color($colors, Azul) !important;
+    color: color($colors, light) !important;
 }
-
-
+/* COLOR DE MSJ INVALIDOS EN FORMULARIOS*/
 .colorMessageInvalidInputs{
     color: color($colors, danger) !important;
+}
+/*ESTILOS DE DIVISORES DE FORMULARIOS*/
+.item-divider-md {
+    padding-left: 0px;
+    border-bottom: none;
+    color: transparent !important;
+    background-color: transparent !important;
+}
+/*Colores titulo alerta - select*/
+.alert-md .alert-title {
+    color: color($colors, Azul) !important;
+}
+/*Color botones alerta*/
+.alert-button {
+    color: color($colors, Azul) !important;
+}
+/*Color item not selected*/
+.alert-md .alert-radio-label {
+    color: color($colors, gray) !important;
+}
+/*Color item selected of alert*/
+.alert-md [aria-checked=true] .alert-radio-label {
+    color: color($colors, Azul) !important;
+}
+/*padding content alert*/
+.alert-md .alert-radio-group, .alert-md .alert-checkbox-group {
+    padding-left: 16px !important;
+}
+/*Colores iconos de actionSheet*/
+.action-sheet-md .action-sheet-icon {
+    color: color($colors, Azul) !important;
+}
+/*Colores titulo de actionSheet*/
+.action-sheet-md .action-sheet-title {
+    color: color($colors, Azul) !important;
+    font-weight: bold;
+}
+/*Colores items de actionSheet*/
+.action-sheet-md .action-sheet-group .button-inner {
+    color: color($colors, gray) !important;
 }

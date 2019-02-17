@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title class="colorBlanco" ><b>Iniciar sesión</b></ion-title>
+    <ion-title class="colorBlanco" ><b>Fortmath</b></ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,14 +15,14 @@
         <ion-label class="textColorWhite">Tipo de usuario</ion-label>
         <ion-select formControlName="typeUser" interface="alert" cancelText="CANCELAR" placeholder="NINGUNO" no-padding >
           <ion-option value="">NINGUNO</ion-option>
-          <ion-option *ngFor="let type of typeUSer" [value]="type.DESCRIPCION">{{ type.DESCRIPCION }}</ion-option>
+          <ion-option *ngFor="let type of typeUSer" [value]="type.ID">{{ type.DESCRIPCION }}</ion-option>
         </ion-select>
       </ion-item>
 
       <!-- Input Email -->
       <ion-item no-padding>
         <ion-icon name="mail" item-left color="Azul"></ion-icon>
-        <ion-label floating >Correo</ion-label>
+        <ion-label floating >Correo</ion-label> 
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
       <!-- Mensaje de error -->
@@ -49,5 +49,10 @@
         Ingresar
       </button>
 
+      <ion-item-divider></ion-item-divider>
+
   </form>
+
+  <button ion-button color="Azul" clear full (click)="goRegister()" > Registarse en FortMath </button>
+
 </ion-content>

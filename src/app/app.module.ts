@@ -9,6 +9,9 @@ import { StatusBar }                  from '@ionic-native/status-bar';
 import { SplashScreen }               from '@ionic-native/splash-screen';
 import { IonicStorageModule }         from '@ionic/storage';
 
+/*PLUGIN TERCEROS */
+import { Camera } from '@ionic-native/camera';
+
 /*MENU TABS DE LA APP */
 import { TabsPage }                   from '../pages/tabs/tabs';
 /*LAYOUTS DE LA APP */
@@ -17,7 +20,8 @@ import {
           RegisterPage, 
           HomeStudentPage,
           HomeTeacherPage,
-          ProfilePage
+          ProfilePage,
+          ModalAvatarPage
 } from '../pages/index.pages';
 
 
@@ -33,6 +37,7 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     HomeStudentPage,
     HomeTeacherPage,
     ProfilePage,
+    ModalAvatarPage,
     TabsPage
   ],
   imports: [
@@ -44,7 +49,7 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
             tabsPlacement: 'top'
           }
       },
-      backButtonText: '',
+      //backButtonText: '',
     }),
     IonicStorageModule.forRoot(),
   ],
@@ -56,11 +61,13 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
     HomeStudentPage,
     HomeTeacherPage,
     ProfilePage,
+    ModalAvatarPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     UtilitiesProvider
