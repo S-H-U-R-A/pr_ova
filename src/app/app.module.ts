@@ -33,7 +33,9 @@ import {
           ModalPhotoPage,
           ModalUpdateUserPage,
           ModalRespuestaPage,
-          ModalSugerenciaPage
+          ModalSugerenciaPage, 
+          MostrarInformePage,
+          DetalleInformePage
 } from '../pages/index.pages';
 
 
@@ -61,6 +63,8 @@ import { StudentOperationsProvider } from '../providers/student-operations/stude
     ModalUpdateUserPage,
     ModalRespuestaPage,
     ModalSugerenciaPage,
+    MostrarInformePage,
+    DetalleInformePage,
     TabsPage
   ],
   imports: [
@@ -95,6 +99,8 @@ import { StudentOperationsProvider } from '../providers/student-operations/stude
     ModalUpdateUserPage,
     ModalRespuestaPage,
     ModalSugerenciaPage,
+    MostrarInformePage,
+    DetalleInformePage,
     TabsPage
   ],
   providers: [

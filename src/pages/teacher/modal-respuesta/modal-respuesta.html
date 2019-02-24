@@ -11,6 +11,10 @@
 
 <ion-content padding>
 
+    <ion-list-header text-center no-lines>
+      <h2><b class="colorAzul">INGRESE LA RESPUESTA</b></h2>  
+    </ion-list-header>
+
   <form 
   [formGroup]="addRta" 
   (ngSubmit)="agregarRespuesta()"
@@ -25,8 +29,8 @@
       
       <ion-list radio-group formControlName="correcta" no-lines>
 
-        <ion-list-header no-lines> 
-          <h2 class="colorGris">Respuesta correcta</h2>
+        <ion-list-header no-lines>
+          <h2 class="colorGris">Seleccione</h2>  
         </ion-list-header>
 
         <ion-item>

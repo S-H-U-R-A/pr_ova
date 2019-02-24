@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title><b>Fortmath</b></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines text-center>
+        <h2><b class="colorAzul">Estadísticas</b></h2>
+      </ion-list-header>
+
+      <ion-item *ngIf="!canEstudiantes" no-lines >
+          <canvas #pieCanvas></canvas>
+      </ion-item>
+      
+      <ion-item-divider *ngIf="!canEstudiantes && showContent"></ion-item-divider>
+
+      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines text-center >
+        <h2><b class="colorAzul">Estudiantes</b></h2>
+      </ion-list-header>
+
+      <ion-list *ngIf="!canEstudiantes && showContent" padding >
+        <ion-item class="sinPaddingLeft" *ngFor="let est of estudiantes?.estudiantes" (click)="detalleInforme(est.id)">
+          <ion-avatar item-start>
+            <img src="data:image/jpeg;base64,{{ est.avatar }}" imageViewer>
+          </ion-avatar>
+          <h2>{{ est.nombres }} {{ est.apellidos }}</h2>
+        </ion-item>
+      </ion-list>
+      <!-- Se muestra si no hay estudiantes  -->
+      <ion-list-header *ngIf="canEstudiantes && showContent " no-lines text-center>
+        <b class="colorAzul">No hay estudiantes para mostrar</b>
+      </ion-list-header>
+
+</ion-content>

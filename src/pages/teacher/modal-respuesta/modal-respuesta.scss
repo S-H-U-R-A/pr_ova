@@ -2,4 +2,7 @@ page-modal-respuesta {
     .item-md {
         padding-left: 16px !important;
     }
+    .list-md .item[no-lines], .list-md .item[no-lines] .item-inner {
+        margin-bottom: 0 !important;
+    }
 }

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title><b>Fortmath</b></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list-header text-center no-lines *ngIf="showContent">
+      <h2><b class="colorAzul">ESTUDIANTE</b></h2>  
+    </ion-list-header>
+
+    <ion-card *ngIf="showContent">
+
+        <ion-card-content>
+
+          <p text-justify> <b class="colorAzul">Nombres: </b>  {{ nombres}}  </p>
+
+          <br>
+
+          <p text-justify > <b class="colorAzul">Sugerencias usadas:</b> {{  cantidadSugerencias }}</p>
+
+          <br>
+
+          <p text-justify > <b class="colorAzul">Respuesta:</b> {{  correcta }}</p>
+
+          <br>
+
+          <img src="{{ image }}" style="height: 300px;" imageViewer />
+
+        </ion-card-content>
+      
+    </ion-card>
+
+</ion-content>

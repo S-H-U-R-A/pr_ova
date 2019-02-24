@@ -3,7 +3,26 @@
     <ion-title>Fortmath</ion-title>
   </ion-navbar>
 </ion-header>
-<!-- Traer pin , titulo y descripcion -->
-<ion-content padding>
-    Fortmath
+
+<ion-content>
+
+  <ion-list-header text-center no-lines *ngIf="showContent">
+    <h2><b class="colorAzul">PROBLEMAS PROPUESTOS</b></h2>  
+  </ion-list-header>
+
+  <ion-list *ngIf="showContent">
+    <ion-card *ngFor="let prob of problemas?.problemas" (click)="mostrarInforme(prob.id)">
+      <ion-card-header class="fondoAzul colorBlanco" >
+        <b> Pin: </b> &nbsp; &nbsp; <b class="colorBlanco pinSize">{{ prob.pin }}</b>
+        <ion-icon end name="done-all" class="iconRight"></ion-icon>
+      </ion-card-header>
+      <ion-card-header text-justify>
+        <b class="colorAzul">Titulo: </b> {{ prob.titulo }}
+      </ion-card-header>
+      <ion-card-content text-justify>
+        <b class="colorAzul">Descripción:</b> {{ prob.descripcion }}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
 </ion-content>
