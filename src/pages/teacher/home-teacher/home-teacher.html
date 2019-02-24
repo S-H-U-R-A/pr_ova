@@ -25,4 +25,9 @@
     </ion-card>
   </ion-list>
 
+  <!-- Se muestra si no hay problemas  -->
+  <ion-list-header *ngIf="showError" no-lines text-center>
+    <b class="colorAzul">No hay problemas para mostrar</b>
+  </ion-list-header>
+
 </ion-content>

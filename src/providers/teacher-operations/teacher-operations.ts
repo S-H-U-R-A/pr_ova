@@ -18,10 +18,10 @@ import { ModelEstudianteProblema } from '../../assets/models/model-estudiantePro
 export class TeacherOperationsProvider {
 
   /*Variables de modelo respuestas*/
-  public respuestas:ModelRespuestas = new ModelRespuestas();;
+  public respuestas:ModelRespuestas = new ModelRespuestas();
   public respuesta:ModelRespuesta;
   /*Variables de modelo sugerencias*/
-  public sugerencias:ModelSugerencias = new ModelSugerencias();;
+  public sugerencias:ModelSugerencias = new ModelSugerencias();
   public sugerencia:ModelSugerencia;
   /*Variables de modelo problema*/
   public problems:ModelProblemas;
@@ -133,6 +133,14 @@ export class TeacherOperationsProvider {
       )
     });
     return promesa;
+  }
+
+  public resetRespuestas(){
+    this.respuestas = new ModelRespuestas();;
+  }
+
+  public resetSugerencias(){
+    this.sugerencias = new ModelSugerencias();
   }
 
   public getProblemsTeacher(id_usuario:any){

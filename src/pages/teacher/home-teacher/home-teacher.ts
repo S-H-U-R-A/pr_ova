@@ -16,7 +16,9 @@ export class HomeTeacherPage {
   /*Objeto con problemas propuestos */
   public problemas:ModelProblemas;
   /*Bandera para mostrar Contenido */
-  public showContent:boolean = false;
+  public showContent:boolean  = false;
+  /* Mostrar msj de que no hay problemas */
+  public showError:boolean    = false;
 
   constructor(
               public  navCtrl:            NavController, 
@@ -32,8 +34,14 @@ export class HomeTeacherPage {
           //SE CIERRA EL GIF DE CARGANDO
           this.utilitiesProvider.closePresentLoading();
           this.problemas = this.teacher.getLocalProblemsTeacher();
-          //Se muestra el contenido
-          this.showContent = true;
+
+          if(this.problemas.problemas.length > 0){
+            //Se muestra el contenido
+            this.showContent = true;
+          }else{
+            this.showError  = true;
+          }
+
         }else{
           //SE CIERRA EL GIF DE CARGANDO
           this.utilitiesProvider.closePresentLoading();

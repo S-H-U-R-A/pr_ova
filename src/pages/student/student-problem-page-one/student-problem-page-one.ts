@@ -56,7 +56,7 @@ export class StudentProblemPageOnePage {
     this.descripcion  = this.navParams.get('data')[0].DESCRIPCION;
     this.pregunta     = this.navParams.get('data')[0].PREGUNTA;
     //SE VALIDA LA EXISTENCIA DE LA FOTO 
-    if( this.navParams.get('data')[0].IMAGEN == '' || this.navParams.get('data')[0].IMAGEN ){
+    if( this.navParams.get('data')[0].IMAGEN == '' || this.navParams.get('data')[0].IMAGEN == undefined ){
       this.photo  = 'assets/imgs/landscape.png';
     }else{
       this.photo  = "data:image/jpeg;base64,"+this.navParams.get('data')[0].IMAGEN;

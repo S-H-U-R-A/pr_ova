@@ -137,22 +137,28 @@ export class TeacherProblemPage {
   }
 
   public addRtaSug(){
+
     this.utilitiesProvider.presentActionSheetRespuestasSugerencia('Selecciona').then((data)=>{
+
+      let modal = null;
+
       if(data == 'rta'){
 
         if( this.cantidadRespuestas < 4 ){
-          let modal = this.modalCtrl.create( ModalRespuestaPage);
+
+          modal = this.modalCtrl.create( ModalRespuestaPage);
           modal.onDidDismiss(()=>{
-            if(this.teach.getRespuestas() != undefined){
+            if( this.teach.getRespuestas() != undefined){
               let rta = this.teach.getRespuestas();
               this.cantidadRespuestas = rta.respuestas.length;
-              //console.log(rta.respuestas[this.cantidadRespuestas-1].correcta);
               if( this.cantidadRespuestas >= 4 && this.cantidadSugerencias >= 3){
                 this.invalidForm = false;
               }
             }
           });  
+
           modal.present();
+
         }else{
           this.utilitiesProvider.presentToast('Ya se adicionaron las respuestas permitidas', 1500);
         }
@@ -160,16 +166,19 @@ export class TeacherProblemPage {
       }else{
         
         if( this.cantidadSugerencias < 3 ){
-          let modal = this.modalCtrl.create( ModalSugerenciaPage );
+
+          modal = this.modalCtrl.create( ModalSugerenciaPage );
+
           modal.onDidDismiss(()=>{
+
             if(this.teach.getSugerencias() != undefined){
               let sug = this.teach.getSugerencias();
               this.cantidadSugerencias = sug.sugerencias.length;
-              //console.log(sug.sugerencias);
               if( this.cantidadRespuestas >= 4 && this.cantidadSugerencias >= 3){
                 this.invalidForm = false;
               }
             }
+
           });  
           modal.present();
         }else{
@@ -218,6 +227,9 @@ export class TeacherProblemPage {
                       this.RegisterProblem.reset();
                       //SE MUESTRA UNA ALERTA CON EL PIN DEL PROBLEMA
                       this.utilitiesProvider.showAlertBasic('PIN', data['pin'], 'Hecho').then(()=>{
+                        //Se resetean los objetos
+                        this.teach.resetRespuestas();
+                        this.teach.resetSugerencias();
                         //REDIRECCIONAR AL HOME
                         let nav = this.app.getRootNav();
                         nav.setRoot(TabsPage);
