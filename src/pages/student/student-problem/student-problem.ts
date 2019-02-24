@@ -65,7 +65,7 @@ export class StudentProblemPage {
             //SE CIERRA EL GIF Y SE LIMPIA EL FORMULARIO
             this.utilitiesProvider.closePresentLoading();
             this.getProblemForm.reset();
-            this.utilitiesProvider.presentToast('Ya respondiste el problema asociado al pin ingresado.', 2500);
+            this.utilitiesProvider.presentToast('Ya se registro una respuesta para el problema.', 3000);
           }else{
             /*Se limpian los campos del formulario */
             this.utilitiesProvider.closePresentLoading();
