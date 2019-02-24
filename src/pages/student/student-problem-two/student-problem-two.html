@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><b>Fortmath</b></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list-header text-wrap text-justify class="colorAzul" no-lines>
+        <b>El objetivo del anexo es obtener evidencia del uso del método de resolución de problemas matematicos, propuestos por george polya.</b>
+    </ion-list-header>
+
+    <ion-item-divider ></ion-item-divider>
+
+    <ion-item class="colorGris " no-padding (click)="takePhoto()">
+      <ion-icon name="md-camera" item-start color="Azul"></ion-icon>
+      Adjunte una foto
+    </ion-item>
+
+    <ion-item-divider  *ngIf="flagPhoto" class="backgroundTransparent textColorWhite" no-padding no-lines></ion-item-divider>
+
+    <ion-item 
+              class="colorGris" 
+              no-padding 
+              (click)="showPhoto()"
+              *ngIf="flagPhoto">
+      <ion-icon name="images" item-start color="Azul"></ion-icon>
+      Ver Imagen
+    </ion-item>
+
+    <ion-item-divider ></ion-item-divider>
+    <ion-item-divider ></ion-item-divider>
+
+    <button 
+        ion-button
+        full padding 
+        color="Azul"
+        type="submit" 
+        [disabled]="photo == '' "
+        (click)="registrarRespuesta()">
+        Enviar
+    </button>
+
+
+
+</ion-content>

@@ -10,3 +10,6 @@ export { ModalPhotoPage }       from '../pages/modal-photo/modal-photo';
 export { ModalUpdateUserPage }  from '../pages/modal-update-user/modal-update-user';
 export { ModalRespuestaPage }   from '../pages/teacher/modal-respuesta/modal-respuesta';
 export { ModalSugerenciaPage }  from '../pages/teacher/modal-sugerencia/modal-sugerencia';
+export { StudentProblemPageOnePage } from '../pages/student/student-problem-page-one/student-problem-page-one';
+export { PopoverSuggestionPage } from '../pages/student/popover-suggestion/popover-suggestion';
+export { StudentProblemTwoPage } from '../pages/student/student-problem-two/student-problem-two';

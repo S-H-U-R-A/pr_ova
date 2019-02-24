@@ -1,18 +1,52 @@
-<!--
-  Generated template for the StudentProblemPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>studentProblem</ion-title>
+    <ion-title><b>Fortmath</b></ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <ion-list-header no-lines text-center>
+    <h1 class="colorAzul" text-center> Resolver problemas </h1>
+  </ion-list-header>
+
+  <ion-card no-margin>
+
+    <ion-card-header text-center text-wrap>
+      Por favor ingrese el pin suministrado por el profesor.
+    </ion-card-header> 
+
+    <img src="assets/imgs/pin.png"/>
+  
+  </ion-card>
+
+  <ion-item-divider ></ion-item-divider>
+
+  <form 
+  [formGroup]="getProblemForm" 
+  (ngSubmit)="getProblem()"
+  >
+    <ion-item no-padding>
+      <ion-label floating >Pin</ion-label>
+      <ion-input type="tel" formControlName="pin" ></ion-input>
+    </ion-item>
+
+    <ion-item  no-lines no-padding class="backgroundTransparent colorMessageInvalidInputs sizeTextMessageInvalidInputs"  *ngIf="getProblemForm.get('pin').errors?.pattern"><b>*Solo se admiten números*</b></ion-item>
+
+    <ion-item-divider ></ion-item-divider>
+
+    <!-- Button de envio de formulario -->
+    <button 
+          ion-button
+          full padding 
+          color="Azul"
+          type="submit" 
+          [disabled]="!getProblemForm.valid">
+      Comenzar
+    </button>
+
+  </form>
 
 </ion-content>

@@ -1,0 +1,4 @@
+<ion-list>
+  <ion-list-header color="Azul">Ayudas</ion-list-header>
+  <button ion-item *ngFor="let sug of arraySugerencias?.sugerencias; let i = index" (click)="mostrarSugerencias(sug.descripcion, i+1 )" >Sugerencia {{ i+1 }} </button>
+</ion-list>

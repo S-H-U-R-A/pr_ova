@@ -63,7 +63,7 @@ export class UtilitiesProvider {
     return promesa;
   }
   /*Metodo que muestra un mensaje toast */
-  public presentToast(message:string, duration:number){
+  public presentToast(message:string, duration:number, shCloseButon?:any){
     /*Se crea una promesa para saber cuando termina de mostrarse el toast */
     let promesa = new Promise((resolve)=>{
       /*Observable para la accion de volver atras boton fisico */
@@ -71,7 +71,9 @@ export class UtilitiesProvider {
       /*Se crea el toast */
       this.toast = this.toastCtrl.create({
         message:  message,
-        duration: duration
+        duration: duration,
+        showCloseButton:shCloseButon,
+        closeButtonText: 'Cerrar'
       })
       /*Se detecta cuando el toast ha sido creado */
       this.toast.willEnter.subscribe(()=>{
@@ -88,6 +90,10 @@ export class UtilitiesProvider {
     });
 
     return promesa;
+  }
+
+  public closeToast(){
+    this.toast = null;
   }
   /* */
   public presentActionSheetReporteConexion(title:string){

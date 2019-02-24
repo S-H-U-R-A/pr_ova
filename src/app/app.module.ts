@@ -11,6 +11,9 @@ import { IonicStorageModule }         from '@ionic/storage';
 
 /*PLUGIN TERCEROS */
 import { Camera } from '@ionic-native/camera';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+
 
 /*MENU TABS DE LA APP */
 import { TabsPage }                   from '../pages/tabs/tabs';
@@ -22,6 +25,9 @@ import {
           HomeTeacherPage,
           TeacherProblemPage,
           StudentProblemPage,
+          StudentProblemPageOnePage,
+          StudentProblemTwoPage,
+          PopoverSuggestionPage,
           ProfilePage,
           ModalAvatarPage,
           ModalPhotoPage,
@@ -46,6 +52,9 @@ import { StudentOperationsProvider } from '../providers/student-operations/stude
     HomeTeacherPage,
     TeacherProblemPage,
     StudentProblemPage,
+    StudentProblemPageOnePage,
+    StudentProblemTwoPage,
+    PopoverSuggestionPage,
     ProfilePage,
     ModalAvatarPage,
     ModalPhotoPage,
@@ -57,6 +66,7 @@ import { StudentOperationsProvider } from '../providers/student-operations/stude
   imports: [
     BrowserModule,
     HttpClientModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp,{
       platforms: {
           android: {
@@ -76,6 +86,9 @@ import { StudentOperationsProvider } from '../providers/student-operations/stude
     HomeTeacherPage,
     TeacherProblemPage,
     StudentProblemPage,
+    StudentProblemPageOnePage,
+    StudentProblemTwoPage,
+    PopoverSuggestionPage,
     ProfilePage,
     ModalAvatarPage,
     ModalPhotoPage,
@@ -88,6 +101,7 @@ import { StudentOperationsProvider } from '../providers/student-operations/stude
     StatusBar,
     SplashScreen,
     Camera,
+    PhotoViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     UtilitiesProvider,

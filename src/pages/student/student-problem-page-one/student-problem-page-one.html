@@ -1,0 +1,85 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><b>Fortmath</b></ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentRadioPopover($event)">
+        <ion-icon name="help" color="light"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card>
+
+        <ion-card-header text-center>
+            <b class="colorAzul">{{ titulo }}</b>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <img src="{{ photo }}" style="height: 300px;" imageViewer />
+
+          <br>
+
+          <p text-justify> <b class="colorAzul">Descripción: </b>  {{ descripcion}}  </p>
+
+          <br>
+
+          <p text-justify > <b class="colorAzul">Pregunta:</b> {{  pregunta }}</p>
+
+        </ion-card-content>
+      
+    </ion-card>
+
+    <br>
+
+    <button 
+        ion-button
+        full padding 
+        color="Azul"
+        type="submit" 
+        (click)="showAnswer()"
+        *ngIf="!preguntas">
+        Mostrar Respuestas
+    </button>
+
+    <form 
+    [formGroup]="selectRespuesta" 
+    (ngSubmit)="evidenceAnswer()"
+    *ngIf="preguntas"
+    >
+
+      <ion-list radio-group formControlName="respuestasProblema" >
+
+        <ion-list-header class="colorAzul" no-lines>
+          <b>Respuestas:</b>
+        </ion-list-header>
+      
+        <ion-item *ngFor="let rta of arrayRespuestas?.respuestas">
+          <ion-label>{{ rta.descripcion }}</ion-label>
+          <ion-radio value="{{ rta.descripcion }}"></ion-radio>
+        </ion-item> 
+
+        <ion-item  no-lines no-padding class=" colorMessageInvalidInputs sizeTextMessageInvalidInputs"  *ngIf="selectRespuesta.get('respuestasProblema').errors?.pattern"><b>*Debe seleccionar una respuesta*</b></ion-item>
+
+        <br>
+
+        <button 
+            ion-button
+            full padding 
+            color="Azul"
+            type="submit" 
+            [disabled]="!selectRespuesta.valid">
+            Seguir al paso 2 de 2
+        </button>
+  
+      </ion-list>
+
+    </form>
+    
+
+</ion-content>
