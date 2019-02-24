@@ -53,9 +53,14 @@ export class StudentProblemPageOnePage {
     })
     /*Se cargan los datos del usuario */
     this.titulo       = this.navParams.get('data')[0].TITULO;
-    this.photo        = "data:image/jpeg;base64,"+this.navParams.get('data')[0].IMAGEN;
     this.descripcion  = this.navParams.get('data')[0].DESCRIPCION;
     this.pregunta     = this.navParams.get('data')[0].PREGUNTA;
+    //SE VALIDA LA EXISTENCIA DE LA FOTO 
+    if( this.navParams.get('data')[0].IMAGEN == '' || this.navParams.get('data')[0].IMAGEN ){
+      this.photo  = 'assets/imgs/landscape.png';
+    }else{
+      this.photo  = "data:image/jpeg;base64,"+this.navParams.get('data')[0].IMAGEN;
+    }
 
     /*Objeto del formulario */
     this.selectRespuesta = this.formBuilder.group({

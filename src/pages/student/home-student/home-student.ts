@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HomeStudentPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @IonicPage()
 @Component({
@@ -15,7 +9,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomeStudentPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public videoAyudasOne:SafeResourceUrl;
+  public videoAyudasTwo:SafeResourceUrl;
+  public videoAyudasThree:SafeResourceUrl;
+  public videoAyudasFour:SafeResourceUrl;
+
+  constructor(
+              public navCtrl:       NavController, 
+              public navParams:     NavParams,
+              private domSanitizer: DomSanitizer
+  ) {
+
+    /*SE evitan agujeros de seguridad en los video*/
+    this.videoAyudasOne   = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/MCbKYBUeE3U');
+    this.videoAyudasTwo   = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/qeKEA066OSs');
+    this.videoAyudasThree = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yWAAzjLkJYo');
+    this.videoAyudasFour  = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/0pUnHF1FJ2s');
+
   }
 
   ionViewDidLoad() {

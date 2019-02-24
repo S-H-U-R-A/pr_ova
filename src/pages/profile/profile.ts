@@ -26,7 +26,7 @@ export class ProfilePage {
     this.apellidos  = localStorage.getItem('lastName');
 
     if( localStorage.getItem('imageUser') == '' || localStorage.getItem('imageUser') == undefined){
-      this.photo      = 'assets/imgs/user.jpg'
+      this.photo      = 'assets/imgs/user.jpg';
     }else{
       this.photo      = "data:image/jpeg;base64,"+localStorage.getItem('imageUser');
     }
