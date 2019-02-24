@@ -52,8 +52,8 @@ export class StudentProblemTwoPage {
       encodingType:       this.camera.EncodingType.JPEG,
       sourceType:         this.camera.PictureSourceType.CAMERA,
       mediaType:          this.camera.MediaType.PICTURE,
-      targetWidth:        1200,
-      targetHeight:       1200,
+      targetWidth:        1920,
+      targetHeight:       1080,
       allowEdit:          false,
       correctOrientation: true
     }
@@ -81,8 +81,8 @@ export class StudentProblemTwoPage {
       encodingType:       this.camera.EncodingType.JPEG,
       sourceType:         this.camera.PictureSourceType.PHOTOLIBRARY,
       mediaType:          this.camera.MediaType.PICTURE,
-      targetWidth:        1200,
-      targetHeight:       1200,
+      targetWidth:        1920,
+      targetHeight:       1080,
       allowEdit:          false,
       correctOrientation: true
     }
