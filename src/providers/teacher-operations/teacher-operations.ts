@@ -38,10 +38,10 @@ export class TeacherOperationsProvider {
   private urlInfoProblema:string        = 'https://fortmath.000webhostapp.com/infoProblem';
   private urlGetStudents:string         = 'https://fortmath.000webhostapp.com/getStudentTeacherProblem';
   private urlGetDataStuden:string       = 'https://fortmath.000webhostapp.com/getOnlyStudentProblem';
+  private urlUpdateFeedback:string      = 'https://fortmath.000webhostapp.com/updateFeedBackProblem';
 
 
   constructor(public http: HttpClient) {
-    
     console.log('Hello TeacherOperationsProvider Provider');
   }
 
@@ -165,6 +165,7 @@ export class TeacherOperationsProvider {
                               data[index].IMAGEN,
                               data[index].PREGUNTA,
                               data[index].FECHA,
+                              data[index].OBSERVACIONES
             );
            /*Se adicionan los objetos al modelo de arreglo de pines */
            this.problems.addProblema(this.problem);
@@ -227,6 +228,26 @@ export class TeacherOperationsProvider {
           this.estudiantes.addEstudiante(this.estudiante);
         }
         resolve(true);
+      }, 
+      error => {
+        reject('Error al consultar el servicio, verifique su conexión a internet al registrar: ' + error);
+      }
+      )
+    });
+    return promesa;
+  }
+
+  public updateFeedbackProblem(observaciones:any, id_problema:any){
+    /*Headers para peticiones externas */
+    const headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    /*Cuerpo de los datos para la petición */
+    const dataBody = new HttpParams()
+    .set('OBSERVACIONES'  , observaciones )
+    .set('ID'     , id_problema)
+
+    let promesa = new Promise( ( resolve, reject) => {
+      this.http.post(this.urlUpdateFeedback,dataBody,{headers}).subscribe( (data)=>{
+        resolve(data);
       }, 
       error => {
         reject('Error al consultar el servicio, verifique su conexión a internet al registrar: ' + error);

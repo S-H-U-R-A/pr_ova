@@ -11,7 +11,7 @@
   </ion-list-header>
 
   <ion-list *ngIf="showContent">
-    <ion-card *ngFor="let prob of problemas?.problemas" (click)="mostrarInforme(prob.id)">
+    <ion-card *ngFor="let prob of problemas?.problemas" (click)="mostrarInforme(prob.id, prob.observaciones)">
       <ion-card-header class="fondoAzul colorBlanco" >
         <b> Pin: </b> &nbsp; &nbsp; <b class="colorBlanco pinSize">{{ prob.pin }}</b>
         <ion-icon end name="done-all" class="iconRight"></ion-icon>

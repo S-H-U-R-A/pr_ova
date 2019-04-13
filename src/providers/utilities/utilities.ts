@@ -62,6 +62,39 @@ export class UtilitiesProvider {
     });
     return promesa;
   }
+  /*Metodo que muestra la alerta en dondese registra el feedback de un problema */
+  public showAlertPromp(){
+    let promesa = new Promise( (resolve) =>{
+      this.alert = this.alertCtrl.create({
+        title: 'Feedback',
+        message: "Ingrese las observaciones correspondientes.",
+        inputs: [
+          {
+            name: 'Feedback',
+            placeholder: 'Feedback'
+          },
+        ],
+        buttons: [
+          {
+            text: 'Cancelar',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Guardar',
+            handler: data => {
+              resolve(data)
+              console.log('Saved clicked');
+            }
+          }
+        ]
+      });
+      this.alert.present();
+
+    });
+    return promesa;
+  }
   /*Metodo que muestra un mensaje toast */
   public presentToast(message:string, duration:number, shCloseButon?:any){
     /*Se crea una promesa para saber cuando termina de mostrarse el toast */
@@ -91,7 +124,6 @@ export class UtilitiesProvider {
 
     return promesa;
   }
-
   public closeToast(){
     this.toast = null;
   }

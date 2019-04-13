@@ -30,6 +30,8 @@ export class MostrarInformePage {
   public canEstudiantes:boolean = false;
   /*Bandera para mostrar Contenido */
   public showContent:boolean = false;
+  /*Feedback del problema */
+  public feedback:string;
 
   constructor(
               public  navCtrl:            NavController, 
@@ -61,6 +63,8 @@ export class MostrarInformePage {
             //SE OCULTA EL GIF DE CARGANDO
             this.utilitiesProvider.closePresentLoading();
             this.estudiantes = this.teacher.getLocalStudentProblem();
+            //SE MUESTRA EL FEEDBACK DE PROBLEMA
+            this.feedback = this.navParams.get('observaciones');
             //Se muestra el contenido
             this.showContent = true;
             //SE CREA LA GRAFICA DE PIE
@@ -96,6 +100,22 @@ export class MostrarInformePage {
 
   public detalleInforme(id_est:any){
     this.navCtrl.push(DetalleInformePage,{id_estudiante:id_est, id_problema:this.navParams.get('id_problema') })
+  }
+
+  public mostrarPromp(){
+    /*SE MUESTRA EL ALERT PROMP PARA CAPTURAR LA OBSERVACION DEL PROBLEMA */
+    this.utilitiesProvider.showAlertPromp().then((data)=>{
+      /*SE MUESTRA EL GIF DE CARGANDO */
+      this.utilitiesProvider.presentLoading('');
+      /*SE INVOCA EL METODO QUE ACTUALIZA EL FEEDBACK */
+      this.teacher.updateFeedbackProblem(data['Feedback'], this.navParams.get('id_problema')).then((rta)=>{
+        /*SE CIERRA EL GIF DE CARGANDO */
+        this.utilitiesProvider.closePresentLoading();
+        /*Se regresa a la pagina de inicio */
+        this.navCtrl.pop();
+        console.log(rta);
+      })
+    });
   }
 
 

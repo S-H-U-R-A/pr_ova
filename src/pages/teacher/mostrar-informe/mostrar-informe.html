@@ -1,12 +1,26 @@
 <ion-header>
   <ion-navbar>
     <ion-title><b>Fortmath</b></ion-title>
+    <ion-buttons end>
+        <button ion-button  round outline color="light" (click)="mostrarPromp()">
+            Edit feedback
+            <!-- <ion-icon name="paper" color="light"></ion-icon> -->
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines text-center>
+      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines style="margin-bottom: 0px;">
+        <h2><b class="colorAzul">Feedback</b></h2>
+      </ion-list-header>
+
+      <ion-item *ngIf="!canEstudiantes" no-lines text-wrap text-justify>
+          <p>{{ feedback }}</p>
+      </ion-item>
+
+      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines>
         <h2><b class="colorAzul">Estadísticas</b></h2>
       </ion-list-header>
 
@@ -16,7 +30,7 @@
       
       <ion-item-divider *ngIf="!canEstudiantes && showContent"></ion-item-divider>
 
-      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines text-center >
+      <ion-list-header *ngIf="!canEstudiantes && showContent" no-lines>
         <h2><b class="colorAzul">Estudiantes</b></h2>
       </ion-list-header>
 

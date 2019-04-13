@@ -1,12 +1,13 @@
 export class ModelProblema {
     
-    public id:          any;
-    public pin:         any;
-    public titulo:      any;
-    public descripcion: any;
-    public imagen:      any;
-    public pregunta:    any;
-    public fecha:       any;
+    public id:              any;
+    public pin:             any;
+    public titulo:          any;
+    public descripcion:     any;
+    public imagen:          any;
+    public pregunta:        any;
+    public fecha:           any;
+    public observaciones:   any;
    
     constructor(
         id:             any, 
@@ -15,7 +16,8 @@ export class ModelProblema {
         descripcion:    any,
         imagen:         any,
         pregunta:       any,
-        fecha:          any
+        fecha:          any,
+        observaciones:  any
     ){
         this.id             = id;
         this.pin            = pin;
@@ -24,6 +26,7 @@ export class ModelProblema {
         this.imagen         = imagen;
         this.pregunta       = pregunta;
         this.fecha          = fecha;
+        this.observaciones  = observaciones;
     }
 
 }
