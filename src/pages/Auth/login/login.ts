@@ -74,7 +74,7 @@ export class LoginPage {
       /*Se limpian los campos del formulario */
       this.formularioLogin.reset();
       /* Se valida la respuesta del login */
-      if(data['error'] == '2'){
+      if( data['error'] == '2'){
         //SE OCULTA EL GIF DE CARGANDO
         this.utilitiesProvider.closePresentLoading();
         this.utilitiesProvider.presentToast('Usuario no valido.', 1500);
@@ -83,7 +83,6 @@ export class LoginPage {
         this.utilitiesProvider.closePresentLoading();
         this.utilitiesProvider.presentToast('Ha ocurrido un error interno.', 1500);
       }else{
-
         /*Se almacenan los datos del usuario */
         localStorage.setItem('userId',    data[0]['ID']);
         localStorage.setItem('name',      data[0]['NOMBRES']);
@@ -97,7 +96,6 @@ export class LoginPage {
         this.utilitiesProvider.closePresentLoading();
         /*Se cambia el root de la aplicación */
         this.navCtrl.setRoot(TabsPage);
-
       }
 
     });

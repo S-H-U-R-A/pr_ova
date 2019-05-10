@@ -53,9 +53,7 @@ export class AuthServiceProvider {
       }
       )
     });
-
     return promesa;
-
   }
 
   public register(typeUser:any, nombres:any, apellidos:any, email:any, password:any, photo:any){
