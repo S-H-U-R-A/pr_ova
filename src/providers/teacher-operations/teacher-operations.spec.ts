@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TeacherOperationsProvider  } from './teacher-operations';
 
-describe('Prueba: Servicio de registro de un problema', () => {
+describe('Prueba: Servicio de registro de un problema y Visualización de anexo Polya por parte del estudiante.', () => {
 
     let service: TeacherOperationsProvider;
     let httpMock: HttpTestingController;
@@ -27,7 +27,7 @@ describe('Prueba: Servicio de registro de un problema', () => {
 
     it('Problema registrado Exitosamente', inject([TeacherOperationsProvider], (service: TeacherOperationsProvider) => {
 
-        let dataError, dataResponse;
+        let dataError;
 
         // Act
         service.registrarProblema("Problema de prueba TEST", "Descripcion de problema TEST ", "Pregunta TEST", "BASE64 TEST")
@@ -41,6 +41,28 @@ describe('Prueba: Servicio de registro de un problema', () => {
        
         // Assert
         expect( req.request.url ).toEqual('https://fortmath.000webhostapp.com/registerProblems');
+        expect( req.request.method ).toEqual('POST');
+        expect( dataError ).toBeUndefined();
+
+    }));
+
+    it('Datos Anexo Polya cargados Exitosamente', inject([TeacherOperationsProvider], (service: TeacherOperationsProvider) => {
+
+        let dataError;
+
+        // Act
+        service.getDataStudent("29", "5")
+        .then( ( data ) => {
+            expect( data["NOMBRES"] ).toBe('Maria ');
+            expect( data["CORRECTA"] ).toBe('1');
+        },(error) => {
+            dataError = error;
+        });
+
+        const req = httpMock.expectOne('https://fortmath.000webhostapp.com/getOnlyStudentProblem');
+       
+        // Assert
+        expect( req.request.url ).toEqual('https://fortmath.000webhostapp.com/getOnlyStudentProblem');
         expect( req.request.method ).toEqual('POST');
         expect( dataError ).toBeUndefined();
 
